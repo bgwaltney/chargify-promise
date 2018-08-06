@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "An easy to use promise based library for the Chargify API.",
   "main": "./lib/chargify.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bgwaltney/chargify-promise.git"
+  },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --recursive test/"
   },

@@ -105,3 +105,55 @@ describe('Chargify Subscription API', function () {
     });
   });
 });
+
+describe('Chargify Product API', function () {
+  this.timeout(10000);
+
+  var chargify
+  beforeEach(() => {
+    chargify = new Chargify(config.subdomain, config.apiKey);
+  })
+
+  it('should create, read, updated, and cancel a customer and products.', function () {
+
+    return chargify.product.create(995476,
+      {
+        "product": {
+          "name": "Gold Plan",
+          "handle": randomString(),
+          "description": "This is our gold plan.",
+          "request_credit_card": true,
+          "price_in_cents": 1000,
+          "interval": 1,
+          "interval_unit": "month",
+          "auto_create_signup_page": true,
+          "tax_code": "D0000000"
+        }
+      }).then(function (data) {
+      return chargify.product.read(data.product.id); //read
+    }).then(function (data) {
+      return chargify.product.update(data.product.id, { //update
+        "product": {
+          "product_handle": randomString(),
+        }
+      });
+    }).then(function (data) {
+      return chargify.product.delete(data.product.id); //delete
+      assert(data.product.archived_at != null);
+    })
+  });
+
+  it('should throw an error if attempting to pass an incorrect payload', function (done) {
+    chargify.product.create({
+      customer:{
+        email:null,
+        first_name: null,
+        last_name: null
+      }
+    }).then(function () {
+      done(new Error('This should have failed'))
+    }, function (err) {
+      done();
+    });
+  });
+});
