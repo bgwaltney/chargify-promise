@@ -1,6 +1,6 @@
 {
   "name": "chargify-promise",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "An easy to use promise based library for the Chargify API.",
   "main": "./lib/chargify.js",
   "repository": {
@@ -19,7 +19,6 @@
   "license": "MIT",
   "dependencies": {
     "mocha": "^5.2.0",
-    "node-promise": "^0.5.13",
     "request": "^2.87.0",
     "request-promise-native": "^1.0.5"
   }

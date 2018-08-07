@@ -138,7 +138,7 @@ describe('Chargify Product API', function () {
         }
       });
     }).then(function (data) {
-      return chargify.product.delete(data.product.id); //delete
+      return chargify.product.archive(data.product.id); //delete
       assert(data.product.archived_at != null);
     })
   });

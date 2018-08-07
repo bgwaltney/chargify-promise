@@ -40,3 +40,24 @@ async function createCustomer() {
 console.log(customer)
 }
 ```
+
+### Available resources and methods
+
+- customer
+  - `list(queryObject)`
+  - `create(customerObject)`
+  - `update(updateObject)`
+  - `read(customer_id)`
+  - `delete(customer_id)`
+- subscription
+  - `list(queryObject)`
+  - `create(subscriptionObject)`
+  - `update(updateObject)`
+  - `read(id)`
+  - `delete(id)`
+- product
+  - `list(queryObject)`
+  - `create(family_id, productObject)`
+  - `update(updateObject)`
+  - `read(id)`
+  - `archive(id)`
